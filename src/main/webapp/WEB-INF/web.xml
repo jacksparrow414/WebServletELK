@@ -26,10 +26,18 @@
     <servlet-name>SimpleServlet</servlet-name>
     <servlet-class>elk.controller.SimpleServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>JulServlet</servlet-name>
+    <servlet-class>elk.controller.JulServlet</servlet-class>
+  </servlet>
 <!--  配置servlet对应的URL路径-->
   <servlet-mapping>
     <servlet-name>SimpleServlet</servlet-name>
     <url-pattern>/simple</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>JulServlet</servlet-name>
+    <url-pattern>/jul</url-pattern>
   </servlet-mapping>
 <!--  配置首页-->
   <welcome-file-list>
