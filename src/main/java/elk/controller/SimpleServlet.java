@@ -22,11 +22,11 @@ public class SimpleServlet extends HttpServlet {
         resp.setContentType("application/json;charset=utf8");
         String json = "{\"name\":\"hello world\"}";
         resp.getWriter().write(json);
-//        try {
-//            int a = 1/0;
-//        }catch (ArithmeticException exception) {
-//            LOGGER.error("报错", exception);
-//        }
+        try {
+            int a = 1/0;
+        }catch (ArithmeticException exception) {
+            LOGGER.error("报错", exception);
+        }
         LOGGER.info("输出响应,响应字符串为{}", json);
         LOGGER.debug("这是debug信息");
         LOGGER.warn("这是warn信息");
