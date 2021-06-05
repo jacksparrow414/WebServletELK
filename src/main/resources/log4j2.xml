@@ -2,8 +2,9 @@
 <Configuration>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-<!--            <JsonTemplateLayout eventTemplateUri="classpath:LogstashJsonEventLayoutV1.json"/>-->
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %C{36}#%M %X %m%n"/>
+<!--            直接使用%C %M 非常降低log4j2的性能-->
+<!--            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %C{36}#%M (%X{clientIp}, %X{id}) %m%n"/>-->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %X{sc} %X{sm} (%X{clientIp}, %X{id}) %m%n"/>
         </Console>
 <!--        通过TCP直接发送到指定端口上-->
 <!--        <Socket name="tcp" protocol="tcp" host="localhost" port="12201" immediateFail="true" immediateFlush="false"-->
@@ -25,9 +26,10 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Root level="info">
-<!--            <AppenderRef ref="Console"/>-->
-            <AppenderRef ref="RollingFile"/>
+<!--        使用了Log4jBridgeHandler之后这里的level对jul同样生效-->
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+<!--            <AppenderRef ref="RollingFile"/>-->
 <!--            <AppenderRef ref="tcp"/>-->
         </Root>
     </Loggers>
