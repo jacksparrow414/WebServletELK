@@ -22,7 +22,7 @@ public class MdcFilter implements Filter {
 
     @Override
     public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, final FilterChain filterChain) throws IOException, ServletException {
-        ThreadContext.put("id", UUID.randomUUID().toString());
+        ThreadContext.put("userId", UUID.randomUUID().toString());
         ThreadContext.put("clientIp", "216.165.95.2");
         filterChain.doFilter(servletRequest, servletResponse);
         ThreadContext.clearAll();

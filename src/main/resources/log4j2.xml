@@ -4,21 +4,19 @@
         <Console name="Console" target="SYSTEM_OUT">
 <!--            直接使用%C %M 非常降低log4j2的性能-->
 <!--            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %C{36}#%M (%X{clientIp}, %X{id}) %m%n"/>-->
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %X{sc} %X{sm} (%X{clientIp}, %X{id}) %m%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %X{scn} %X{smn} (%X{clientIp}, %X{userId}) %m%n"/>
         </Console>
-<!--        通过TCP直接发送到指定端口上-->
-<!--        <Socket name="tcp" protocol="tcp" host="localhost" port="12201" immediateFail="true" immediateFlush="false"-->
-<!--                bufferedIO="false">-->
-<!--&lt;!&ndash;            输出信息为JSON格式&ndash;&gt;-->
-<!--            <JsonTemplateLayout eventTemplateUri="classpath:LogstashJsonEventLayoutV1.json"/>-->
-<!--        </Socket>-->
+        <!--通过TCP直接发送到指定端口上-->
+        <Socket name="tcp" protocol="tcp" host="192.168.0.104" port="12201" immediateFail="true" immediateFlush="false"
+                bufferedIO="false">
+            <!--输出信息为ECS JSON格式-->
+            <JsonTemplateLayout eventTemplateUri="classpath:EcsLayout.json"/>
+        </Socket>
 
         <RollingFile name="RollingFile"
                      fileName="/Users/jacksparrow414/Downloads/app.log"
                      filePattern="/Users/jacksparrow414/Downloads/app-%d{yyyy-MM-dd HH}.log">
-            <JsonTemplateLayout eventTemplateUri="classpath:LogstashJsonEventLayoutV1.json"/>
-<!--            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="NEUTRAL"/>-->
-<!--            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>-->
+            <JsonTemplateLayout eventTemplateUri="classpath:EcsLayout.json"/>
             <Policies>
                 <TimeBasedTriggeringPolicy />
                 <SizeBasedTriggeringPolicy size="20 MB" />
@@ -27,10 +25,10 @@
     </Appenders>
     <Loggers>
 <!--        使用了Log4jBridgeHandler之后这里的level对jul同样生效-->
-        <Root level="debug">
+        <Root level="info">
             <AppenderRef ref="Console"/>
-<!--            <AppenderRef ref="RollingFile"/>-->
-<!--            <AppenderRef ref="tcp"/>-->
+            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="tcp"/>
         </Root>
     </Loggers>
 </Configuration>

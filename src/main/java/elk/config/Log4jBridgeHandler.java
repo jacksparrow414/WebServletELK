@@ -179,8 +179,8 @@ public class Log4jBridgeHandler extends java.util.logging.Handler implements Pro
         String msg = julFormatter.formatMessage(record);    // use JUL's implementation to get real msg
         String sourceClassName = record.getSourceClassName();
         String sourceMethodName = record.getSourceMethodName();
-        ThreadContext.put("sc", sourceClassName);
-        ThreadContext.put("sm", sourceMethodName);
+        ThreadContext.put("scn", sourceClassName);
+        ThreadContext.put("smn", sourceMethodName);
         /* log4j allows nulls:
         if (msg == null) {
             // JUL allows nulls, but other log system may not
