@@ -35,3 +35,5 @@ set CLASSPATH=%CATALINA_HOME%\log4j\*
 - 启动Tomcat,正常启动无报错
 ## 运行
 在IDE里进行传统Web项目的Tomcat部署即可
+## 拓展
+如果你想将以上配置放在springboot项目下运行，或者对配置有什么疑问，请参考[Log4j2相关文档](http://logging.apache.org/log4j/2.x/log4j-appserver/index.html)或查阅SpringBoot相关资料
