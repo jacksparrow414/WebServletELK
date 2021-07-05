@@ -32,7 +32,7 @@
 set JAVA_OPTS=-Djava.library.path=%CATALINA_HOME%\bin -Dlog4j2.configurationFile=file:///D:/Tomcat/apache-tomcat-8.5.63/log4j/log4j2.xml -Dlog4j2.garbagefreeThreadContextMap=true -Dlog4j2.enableThreadlocals=true -Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector %JAVA_OPTS%
 set CLASSPATH=%CATALINA_HOME%\log4j\*
 ```
-- 启动Tomcat,正常启动无报错
+- 关闭Tomcat，重新启动Tomcat,正常启动无报错
 ## 运行
 在IDE里进行传统Web项目的Tomcat部署即可
 ## 拓展
