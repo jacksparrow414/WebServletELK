@@ -27,7 +27,7 @@
     </Loggers>
 </Configuration>
 ```
-- 在Tomca安装目录下的bin文件夹内，根据当前操作系统新建setent.bat或者setenv.sh文件，Window下文件内容如下
+- 在Tomca安装目录下的bin文件夹内，根据当前操作系统新建setent.bat或者setenv.sh文件，Window下文件内容如下，其中-Dlog4j2.configurationFile根据自己实际Tomcat安装路径调整
 ```xml
 set JAVA_OPTS=-Djava.library.path=%CATALINA_HOME%\bin -Dlog4j2.configurationFile=file:///D:/Tomcat/apache-tomcat-8.5.63/log4j/log4j2.xml -Dlog4j2.garbagefreeThreadContextMap=true -Dlog4j2.enableThreadlocals=true -Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector %JAVA_OPTS%
 set CLASSPATH=%CATALINA_HOME%\log4j\*
